@@ -21,6 +21,53 @@ class _HomeState extends State<Home> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController passwordConfirmController = TextEditingController();
 
+  User user = User();
+  Future<void> _showDialog(BuildContext context) async {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Inscription réussie'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: [
+                Text('Prénom: ${user.prenom}'),
+                Text('Nom: ${user.nom}'),
+              ],
+            ),
+          ),
+          icon: const Icon(
+            Icons.check_circle_outline,
+            color: Colors.green,
+            size: 50,
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text(
+                'Fermer',
+                style: TextStyle(color: Colors.red, fontSize: 17),
+              ),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: const Text(
+                'OK',
+                style: TextStyle(color: Colors.teal, fontSize: 17),
+              ),
+            ),
+          ],
+          actionsAlignment: MainAxisAlignment.spaceBetween,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12)
+          ),
+        );
+      },
+    );
+  }
+
   void _submit() {
     var isValid = false;
     var form = _formKey.currentState;
@@ -28,17 +75,16 @@ class _HomeState extends State<Home> {
       isValid = form.validate();
     }
     if (isValid) {
-      User user = User(
-          nom: nomController.text,
-          prenom: prenomController.text,
-          email: emailController.text,
-          password: passwordController.text);
-      print("Nom: ${user.nom}\nPrenom: ${user.prenom}\nEmail: ${user.email}\n");
+      user.nom = nomController.text;
+      user.prenom = prenomController.text;
+      user.email = emailController.text;
+      user.password = passwordController.text;
       nomController.clear();
       prenomController.clear();
       emailController.clear();
       passwordController.clear();
       passwordConfirmController.clear();
+      _showDialog(context);
     }
   }
 
@@ -135,11 +181,6 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
-                  Row(
-                    children: [
-                      Text(prenomController.text),
-                    ],
-                  )
                 ],
               ),
             )),
