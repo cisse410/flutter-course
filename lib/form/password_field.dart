@@ -30,8 +30,10 @@ class _PasswordFieldState extends State<PasswordField> {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
+      cursorColor: Colors.teal,
       decoration: InputDecoration(
         labelText: widget.passwordLabel,
+        labelStyle: const TextStyle(color: Colors.black),
         focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(
           color: Colors.teal,

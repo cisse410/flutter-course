@@ -16,8 +16,10 @@ class FormTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      cursorColor: Colors.teal,
       decoration: InputDecoration(
           labelText: labelText,
+          labelStyle: const TextStyle(color: Colors.black),
           focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(
             color: Colors.teal,
@@ -28,7 +30,10 @@ class FormTextField extends StatelessWidget {
               color: Colors.teal,
             ),
           ),
-          prefixIcon: Icon(Icons.person, color: Colors.teal,),
+          prefixIcon: const Icon(
+            Icons.person,
+            color: Colors.teal,
+          ),
           suffixIcon: IconButton(
             onPressed: controller.clear,
             icon: const Icon(Icons.clear),

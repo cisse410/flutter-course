@@ -31,8 +31,7 @@ class _HomeState extends State<Home> {
           content: SingleChildScrollView(
             child: ListBody(
               children: [
-                Text('Prénom: ${user.prenom}'),
-                Text('Nom: ${user.nom}'),
+                Text('${user.prenom} ${user.nom} vos informations sont bien enregistrees'),
               ],
             ),
           ),
@@ -118,7 +117,8 @@ class _HomeState extends State<Home> {
                   const Text(
                     'Formulaire d\'inscription',
                     style: TextStyle(
-                      fontSize: 27,
+                      fontSize: 30,
+                      fontFamily: 'AnnapurnaSIL'
                     ),
                   ),
                   SizedBox(
@@ -174,10 +174,11 @@ class _HomeState extends State<Home> {
                     //   backgroundColor: MaterialStateProperty.all(Colors.teal),
                     // ),
                     child: const Text(
-                      'Inscrire',
+                      'S\'inscrire',
                       style: TextStyle(
                         fontSize: 30,
                         color: Colors.white,
+                        fontFamily: 'AnnapurnaSIL'
                       ),
                     ),
                   ),
