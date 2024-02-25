@@ -32,12 +32,17 @@ class _PasswordConfirmationState extends State<PasswordConfirmation> {
       controller: widget.controller,
       decoration: InputDecoration(
         labelText: widget.passwordLabel,
+        focusedBorder: const OutlineInputBorder(
+            borderSide: BorderSide(
+          color: Colors.teal,
+        )),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
           borderSide: const BorderSide(
             color: Colors.teal,
           ),
         ),
+        prefixIcon: Icon(Icons.lock, color: Colors.teal,),
         suffix: InkWell(
             onTap: _togglePasswordView,
             child: Icon(

@@ -17,18 +17,22 @@ class FormTextField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
-        labelText: labelText,
-        focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(
-          color: Colors.teal,
-        )),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          borderSide: const BorderSide(
+          labelText: labelText,
+          focusedBorder: const OutlineInputBorder(
+              borderSide: BorderSide(
             color: Colors.teal,
+          )),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: const BorderSide(
+              color: Colors.teal,
+            ),
           ),
-        ),
-      ),
+          prefixIcon: Icon(Icons.person, color: Colors.teal,),
+          suffixIcon: IconButton(
+            onPressed: controller.clear,
+            icon: const Icon(Icons.clear),
+          )),
       keyboardType: inputType,
       validator: (value) {
         if (value == null || value.isEmpty) {

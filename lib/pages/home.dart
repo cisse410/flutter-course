@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/form/email_field.dart';
 import 'package:flutter_app/form/password_confimation.dart';
@@ -33,6 +34,11 @@ class _HomeState extends State<Home> {
           email: emailController.text,
           password: passwordController.text);
       print("Nom: ${user.nom}\nPrenom: ${user.prenom}\nEmail: ${user.email}\n");
+      nomController.clear();
+      prenomController.clear();
+      emailController.clear();
+      passwordController.clear();
+      passwordConfirmController.clear();
     }
   }
 
@@ -52,16 +58,21 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.teal,
       ),
       body: SingleChildScrollView(
+        dragStartBehavior: DragStartBehavior.start,
         child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Form(
               key: _formKey,
               child: Column(
                 children: [
+                  const CircleAvatar(
+                    radius: 75,
+                    backgroundImage: AssetImage('assets/images/logoUIDT.jpeg'),
+                  ),
                   const Text(
-                    'Formulaire avec validation de données',
+                    'Formulaire d\'inscription',
                     style: TextStyle(
-                      fontSize: 17,
+                      fontSize: 27,
                     ),
                   ),
                   SizedBox(
@@ -106,14 +117,29 @@ class _HomeState extends State<Home> {
                   ),
                   ElevatedButton(
                     onPressed: _submit,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.teal,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      minimumSize: Size(MediaQuery.of(context).size.height, 50),
+                    ),
+                    // style: ButtonStyle(
+                    //   backgroundColor: MaterialStateProperty.all(Colors.teal),
+                    // ),
                     child: const Text(
-                      'Envoyer',
+                      'Inscrire',
                       style: TextStyle(
                         fontSize: 30,
-                        color: Colors.teal,
+                        color: Colors.white,
                       ),
                     ),
                   ),
+                  Row(
+                    children: [
+                      Text(prenomController.text),
+                    ],
+                  )
                 ],
               ),
             )),
