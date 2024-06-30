@@ -48,14 +48,14 @@ class _PasswordConfirmationState extends State<PasswordConfirmation> {
           Icons.lock,
           color: Colors.teal,
         ),
-        suffix: InkWell(
+        suffixIcon: InkWell(
             onTap: _togglePasswordView,
             child: Icon(
               _isHidden ? Icons.visibility : Icons.visibility_off,
             )),
       ),
       keyboardType: widget.inputType,
-      obscureText: true,
+      obscureText: _isHidden,
       onChanged: (value) {
         setState(() {
           password = value;

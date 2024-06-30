@@ -48,14 +48,13 @@ class _PasswordFieldState extends State<PasswordField> {
           Icons.lock,
           color: Colors.teal,
         ),
-        suffix: InkWell(
-            onTap: _togglePasswordView,
-            child: Icon(
-              _isHidden ? Icons.visibility : Icons.visibility_off,
-            )),
+        suffixIcon: IconButton(
+          onPressed: _togglePasswordView,
+          icon: Icon(_isHidden ? Icons.visibility : Icons.visibility_off)
+        ),
       ),
       keyboardType: widget.inputType,
-      obscureText: true,
+      obscureText: _isHidden,
       onChanged: (value) {
         setState(() {
           password = value;
